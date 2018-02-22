@@ -1,0 +1,14 @@
+{
+  "name": "room-controller",
+  "version": "0.0.1",
+  "description": "Controls an escape room by creating an API and displaying current state",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Price Comstock",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
