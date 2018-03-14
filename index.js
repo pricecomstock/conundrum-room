@@ -4,13 +4,19 @@ const app = express()
 const roomCreator = require('./room.js')
 
 // Use environment variable port or 3000
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT || 3000;
 
 // Initialize Room
 var room = new roomCreator.Room('starship'); // this string is used to determine room setup
 console.log(room);
 room.start();
 
+// This is for development mostly
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+  });
 
 /* API ROUTES */
 var router = express.Router();

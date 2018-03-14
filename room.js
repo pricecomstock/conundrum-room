@@ -71,7 +71,10 @@ class Room {
     }
 
     checkWin() { // This function might do too much
-      const puzzleStatus = Object.values(this._puzzles);
+      const puzzleStatus = Object.keys(this._puzzles).map( (key) => {
+        return this._puzzles[key]
+      });
+      // const puzzleStatus = Object.values(this._puzzles);
       // console.log(puzzleStatus);
 
       const allPuzzlesComplete = puzzleStatus.every(status => {
