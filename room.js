@@ -93,7 +93,7 @@ class Room {
     decrementTime() {
       if (this._secondsRemaining === 0 && !this._won && !this._lost) { 
         if (!this.checkWin()) { // this should trigger the win function if we've won
-          lose(); // if it returns false we trigger the lose function
+          this.lose(); // if it returns false we trigger the lose function
         }
       } else if (!this._won && !this._lost) { // if there are more than zero seconds left and we haven't won or lost
         this._secondsRemaining -= 1; // underscore = direct manipulation
