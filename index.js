@@ -98,5 +98,5 @@ router.get('/play', function(req, res) {
 /* START SERVER */
 // all of our routes will be prefixed with /api
 app.use('/api', router);
-app.use('/dist', express.static('dist'))
+app.use('/dist', express.static(__dirname + '/dist'))
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
