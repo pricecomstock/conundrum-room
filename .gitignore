@@ -59,3 +59,6 @@ typings/
 
 # next.js build output
 .next
+
+# video files are too big
+*.mp4
