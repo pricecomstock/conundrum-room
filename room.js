@@ -13,6 +13,8 @@ class Room {
       this._won = false;
       this._lost = false;
       this._playing = false;
+
+      this._hints = []
     }
 
     // Getters and Setters
@@ -112,7 +114,7 @@ class Room {
     }
 
     hint(message) {
-      console.log(message);
+      this._hints.push(message)
 
       // TODO make message print somewhere visible to room
     }
@@ -125,7 +127,8 @@ class Room {
         secondsRemaining: this.secondsRemaining,
         won: this._won,
         lost: this._lost,
-        playing: this._playing
+        playing: this._playing,
+        hints: this._hints
       }
     }
   }

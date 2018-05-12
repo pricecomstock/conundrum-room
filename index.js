@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 
 const roomCreator = require('./room.js')
@@ -20,6 +21,7 @@ app.use(function(req, res, next) {
 
 /* API ROUTES */
 var router = express.Router();
+app.use(bodyParser.json())
 
 // Base route (easy connectivity test)
 router.get('/', function(req, res) {
@@ -69,9 +71,9 @@ router.get('/setpuzzle', function(req, res) {
 
 
 // Send hint
-router.get('/hint', function(req, res) {
-    room.hint(req.query.message);
-    res.json({message: "sent hint " + req.query.message})
+router.post('/hint', function(req, res) {
+    room.hint(req.body.hint);
+    res.json({success: true, "hint": req.body.hint})
 });
 
 // Pause
