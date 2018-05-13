@@ -73,7 +73,13 @@ router.get('/setpuzzle', function(req, res) {
 // Send hint
 router.post('/hint', function(req, res) {
     room.hint(req.body.hint);
-    res.json({success: true, "hint": req.body.hint})
+    res.json({success: true, hint: req.body.hint})
+});
+
+// Set Time
+router.post('/settime', function(req, res) {
+    room.secondsRemaining(req.body.secondsRemaining)
+    res.json({success: true, room: room.status})
 });
 
 // Pause
