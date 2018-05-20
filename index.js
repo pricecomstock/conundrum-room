@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
 
 // Room status
 router.get('/room', function(req, res) {
-    res.json(room.status);
+    res.json(room.roomStatus());
 });
 
 // Time
@@ -64,7 +64,7 @@ router.get('/setpuzzle', function(req, res) {
 
         res.json({
             message: "Success",
-            room: room.status
+            room: room.roomStatus()
         });
     }
 });
@@ -79,7 +79,7 @@ router.post('/hint', function(req, res) {
 // Set Time
 router.post('/settime', function(req, res) {
     room.secondsRemaining(req.body.secondsRemaining)
-    res.json({success: true, room: room.status})
+    res.json({success: true, room: room.roomStatus()})
 });
 
 // Pause

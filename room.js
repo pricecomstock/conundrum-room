@@ -120,7 +120,7 @@ class Room {
     }
 
     // Get a more JSON friendly version of the room status without extra data
-    get status() {
+    roomStatus() {
       return {
         online: true, // Room is always online if this server is responding!
         name: this._name,
