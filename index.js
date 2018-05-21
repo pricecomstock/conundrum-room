@@ -84,22 +84,14 @@ router.post('/settime', function(req, res) {
 
 // Pause
 router.get('/pause', function(req, res) {
-    room.pause();
-    res.json({
-        message: `paused with ${room.secondsRemaining} remaining`,
-        secondsRemaining: room.secondsRemaining,
-        playing: room.isPlaying
-    })
+    const result = room.pause();
+    res.json(result);
 });
 
-// Pause
+// Play
 router.get('/play', function(req, res) {
-    room.play();
-    res.json({
-        message: `resumed with ${room.secondsRemaining} remaining`,
-        secondsRemaining: room.secondsRemaining,
-        playing: room.isPlaying
-    });
+    const result = room.play();
+    res.json(result);
 });
 
 

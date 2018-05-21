@@ -48,13 +48,32 @@ class Room {
     
     play() {
       // using the () => notation, we preserve the meaning of "this" inside setInterval
-      this._intervalId = setInterval( () => this.decrementTime(), 1000); // start timer
-      this._playing = true;
+      if (!this._playing) {
+        this._intervalId = setInterval( () => this.decrementTime(), 1000); // start timer
+        this._playing = true;
+        return {
+          success: true,
+          message: `Played/resumed with ${this._secondsRemaining} remaining`,
+          room: this.roomStatus()
+        }
+      } else {
+        return { success: false, message: "already playing" }
+      }
     }
     
     pause() {
-      clearInterval(this._intervalId);
-      this._playing = false;
+      // using the () => notation, we preserve the meaning of "this" inside setInterval
+      if (this._playing) {
+        clearInterval(this._intervalId);
+        this._playing = false;
+        return {
+          success: true,
+          message: `Paused with ${this._secondsRemaining} remaining`,
+          room: this.roomStatus()
+        }
+      } else {
+        return { success: false, message: "already paused" }
+      }
     }
 
     updatePuzzleStatus(puzzleName, status) {
